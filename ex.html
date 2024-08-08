@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yeswinkumaru Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #1f1f1f;
+            padding: 1em 0;
+            text-align: center;
+            border-bottom: 2px solid #e91e63;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            animation: slideInDown 1s ease;
+        }
+
+        header h1 {
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #e91e63;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 2em;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #e91e63;
+            transform: scale(1.1);
+        }
+
+        .section {
+            padding: 6em 0;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        #hero {
+            background: linear-gradient(to right, #e91e63, #9c27b0);
+            color: #ffffff;
+            padding: 6em 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 60%);
+            top: -100px;
+            left: -100px;
+            animation: float 6s ease-in-out infinite;
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        #hero h2 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+            animation: fadeInDown 1s ease-in-out;
+            z-index: 1;
+        }
+
+        #hero p {
+            font-size: 1.5em;
+            margin-bottom: 1.5em;
+            animation: fadeInUp 1s ease-in-out;
+            z-index: 1;
+        }
+
+        .cta-button {
+            background-color: #ffffff;
+            color: #e91e63;
+            padding: 0.8em 2em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            animation: fadeInUp 1s ease-in-out;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            z-index: 1;
+        }
+
+        .cta-button:hover {
+            background-color: #ff4081;
+            transform: scale(1.05);
+        }
+
+        .parallax {
+            background: url('your-image.jpg') no-repeat center center/cover;
+            height: 400px;
+            position: relative;
+            z-index: -1;
+            animation: parallaxScroll 10s infinite;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2em;
+            position: relative;
+            z-index: 1;
+        }
+
+        #about .profile-img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin: 1.5em 0;
+            animation: bounceIn 1s ease;
+            box-shadow: 0 0 15px rgba(233, 30, 99, 0.7);
+        }
+
+        #skills ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2em;
+            padding: 0;
+            list-style: none;
+            margin: 0;
+        }
+
+        #skills li {
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            animation: fadeInUp 1s ease-in-out;
+            background-color: #1f1f1f;
+            padding: 1em 1.5em;
+            border-radius: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #skills li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 10px rgba(233, 30, 99, 0.5);
+        }
+
+        #projects .project-item {
+            background-color: #1f1f1f;
+            padding: 1.5em;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: zoomIn 1s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #projects .project-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #projects img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 1em;
+        }
+
+        #projects .project-item::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.3), rgba(156, 39, 176, 0.3));
+            z-index: 0;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        #projects .project-item:hover::after {
+            opacity: 1;
+        }
+
+        #experience, #education {
+            background-color: #1f1f1f;
+            padding: 2em;
+            border-radius: 10px;
+            margin-bottom: 2em;
+            animation: fadeInUp 1s ease-in-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        #experience .experience-item, #education .education-item {
+            border-left: 4px solid #e91e63;
+            padding-left: 1em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #experience .experience-item::before, #education .education-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #e91e63, #9c27b0);
+            animation: slideInLeft 1s ease;
+        }
+
+        #contact form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5em;
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        #contact input, #contact textarea, #contact button {
+            padding: 1em;
+            border-radius: 5px;
+            border: none;
+            font-size: 1em;
+        }
+
+        #contact input, #contact textarea {
+            background-color: #333;
+            color: #ffffff;
+        }
+
+        #contact input:focus, #contact textarea:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(233, 30, 99, 0.5);
+        }
+
+        #contact button {
+            background-color: #e91e63;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        #contact button:hover {
+            background-color: #ff4081;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #1f1f1f;
+            padding: 1em 0;
+            text-align: center;
+            border-top: 2px solid #e91e63;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        footer p {
+            margin: 0;
+            color: #ffffff;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(20px);
+            }
+        }
+
+        @keyframes parallaxScroll {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 0 100%;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                width: 0;
+            }
+            to {
+                width: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Yeswinkumaru</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <h2 class="animate__animated animate__fadeInDown">Innovative Engineering Solutions</h2>
+                <p class="animate__animated animate__fadeInUp">I'm Yeswinkumaru, dedicated to bringing creative ideas to life through technology.</p>
+                <a href="#contact" class="cta-button animate__animated animate__fadeInUp">Contact Me</a>
+            </div>
+        </section>
+
+        <div class="parallax"></div>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2>About Me</h2>
+                <p class="animate__animated animate__fadeInUp">Hello! I'm Yeswinkumaru, a passionate and hardworking student. I excel in both team-based and independent environments, and I'm eager to contribute my skills in IT and social media to any project.</p>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <div class="container">
+                <h2>Skills</h2>
+                <ul class="skills-list animate__animated animate__fadeInUp">
+                    <li><i class="fas fa-code"></i> Python, JavaScript, C++</li>
+                    <li><i class="fas fa-laptop-code"></i> HTML, CSS, React</li>
+                    <li><i class="fas fa-database"></i> SQL, MongoDB</li>
+                    <li><i class="fas fa-robot"></i> Machine Learning</li>
+                    <li><i class="fas fa-brain"></i> Deep Learning</li>
+                    <li><i class="fas fa-cloud"></i> AWS, Azure</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="container">
+                <h2>Projects</h2>
+                <div class="project-list animate__animated animate__zoomIn">
+                    <div class="project-item">
+                        <img src="fras.jpeg" alt="Face Recognition Attendance System project">
+                        <h3>Face Recognition Attendance System</h3>
+                        <p>Developed a Face Recognition Attendance System using Python and machine learning techniques.</p>
+                        <a href="#" class="project-link">View Project</a>
+                    </div>
+                    <!-- Add more project items as needed -->
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section">
+            <div class="container">
+                <h2>Experience</h2>
+                <div class="experience-list">
+                    <div class="experience-item animate__animated animate__fadeInUp">
+                        <h3>Lenovo Company</h3>
+                        <p>Intern (IPT)</p>
+                        <p>June 2024</p>
+                        <p>Worked as an intern in Lenovo's quality department, ensuring hardware and software compatibility.</p>
+                    </div>
+                    <div class="experience-item animate__animated animate__fadeInUp">
+                        <h3>College Intern</h3>
+                        <p>Software Assistance (seniors)</p>
+                        <p>2023-Present</p>
+                        <p>Collaborated with college seniors on various projects involving C, C++, Python, Machine Learning, and SQL.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="section">
+            <div class="container">
+                <h2>Education</h2>
+                <div class="education-list">
+                    <div class="education-item animate__animated animate__fadeInUp">
+                        <h3>Christ College Of Engineering And Technology</h3>
+                        <p>Bachelor of Technology in Computer Science Engineering</p>
+                        <p>2021-2025</p>
+                    </div>
+                    <div class="education-item animate__animated animate__fadeInUp">
+                        <h3>Presidency School</h3>
+                        <p>High Secondary Education</p>
+                        <p>2019-2021</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <h2>Contact Me</h2>
+                <form id="contact-form" class="animate__animated animate__fadeInUp">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Yeswinkumaru. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
